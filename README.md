@@ -80,7 +80,7 @@ popupCtrl.backgroundFrom(background, {
 });
 ```
 
-`init,`show` and `hide` are callbacks bound to the background node StateModifier.
+`init`,`show` and `hide` are callbacks bound to the background node StateModifier.
 
 For example, the default background callbacks are:
 ```javascript
