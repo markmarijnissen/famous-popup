@@ -4,12 +4,13 @@ famous-popup
 
 ### Getting started
 
-Install using bower or npm
+Install using npm
 
 ```bash
-  bower install famous-popup
   npm install famous-popup
 ```
+
+Or just copy `popup.js` to your project.
 
 ## Usage:
 
