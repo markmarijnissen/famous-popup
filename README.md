@@ -14,7 +14,7 @@ Or just copy `popup.js` to your project.
 
 ## Usage:
 
-Creating a PopupController:
+### Creating a PopupController:
 
 ```javascript
 var PopupController = require('famous-popup');
@@ -30,7 +30,7 @@ var popupCtrl = new PopupController({
 var popup = new Surface({content: "Hello World!"});
 ```
 
-Adding Popups:
+### Adding Popups:
 
 ```javascript
 // Add popup to the end of the queue (i.e. below all others)
@@ -46,7 +46,7 @@ popupCtrl.swap(popup);
 popupCtrl.on('popup',function(popup) { .... });
 ```
 
-Hiding Popups:
+### Hiding Popups:
 
 ```javascript
 // Hide current popup
@@ -65,7 +65,43 @@ popup.emit('hide');
 popupCtrl.on('hide',function(popup) { .... });
 ```
 
-Using events instead of methods:
+### Adding a background
+```javascript
+var background = new Surface({
+	properties: {
+		'background-color':'rgba(0,0,0,0.8)'
+	}
+});
+
+popupCtrl.backgroundFrom(background, {
+	init: function() { .... },
+	show: function() { .... },
+	hide: function() { .....}
+});
+```
+
+`init,`show` and `hide` are callbacks bound to the background node StateModifier.
+
+For example, the default background callbacks are:
+```javascript
+PopupController.DEFAULT_BACKGROUND_OPTIONS = {
+    init: function() {
+        this.setOpacity(0);
+        this.setTransform(HIDDEN);
+    },
+    show: function() {
+        this.setTransform(VISIBLE);
+        this.setOpacity(1,{curve:'linear',duration: 300});
+    },
+    hide: function(){
+        this.setOpacity(0,{curve:'linear',duration: 300},function(){
+            this.setTransform(HIDDEN);
+        }.bind(this));
+    }
+};
+```
+
+### Using events to trigger popups
 
 ```javascript
 // All methods exist as events:
