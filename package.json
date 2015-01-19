@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/markmarijnissen/famous-popup/issues"
   },
-  "homepage": "https://github.com/markmarijnissen/famous-popup"
+  "homepage": "https://github.com/markmarijnissen/famous-popup",
+  "dependencies": {
+    "famous": "^0.3.1"
+  }
 }
