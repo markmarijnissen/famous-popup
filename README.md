@@ -105,25 +105,33 @@ PopupController.DEFAULT_BACKGROUND_OPTIONS = {
 
 ```javascript
 // All methods exist as events:
-popupCtrl.trigger('push',popup);
-popupCtrl.trigger('unshift',popup);
-popupCtrl.trigger('swap',popup);
-popupCtrl.trigger('hide',popup);
-popupCtrl.trigger('clear');
+popupCtrl.emit('push',popup);
+popupCtrl.emit('unshift',popup);
+popupCtrl.emit('swap',popup);
+popupCtrl.emit('hide',popup);
+popupCtrl.emit('clear');
 
 // If you passed `engine: true` in options, 
 // then you can use global events.
-Engine.trigger('popup-push',popup);
-Engine.trigger('popup-unshift',popup);
-Engine.trigger('popup-swap',popup);
-Engine.trigger('popup-hide',popup);
-Engine.trigger('popup-clear');
+Engine.emit('popup-push',popup);
+Engine.emit('popup-unshift',popup);
+Engine.emit('popup-swap',popup);
+Engine.emit('popup-hide',popup);
+Engine.emit('popup-clear');
 
 // Note: they are prefixed with `popup-`!
 ```
 
 
 ## Changelog
+
+### 0.1.2 (20/1/2014)
+
+* Fix famo.us dependency in package.json
+
+### 0.1.1 (19/1/2014)
+
+* Little bugfix
 
 ### 0.1.0 (19/1/2014)
 

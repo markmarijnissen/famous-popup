@@ -1,6 +1,6 @@
 {
   "name": "famous-popup",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Show and hide a queue of popups with Famo.us",
   "main": "popup.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "url": "https://github.com/markmarijnissen/famous-popup/issues"
   },
   "homepage": "https://github.com/markmarijnissen/famous-popup",
-  "dependencies": {
+  "devDependencies": {
     "famous": "^0.3.1"
   }
 }

@@ -6,29 +6,32 @@ var StateModifier = require('famous/modifiers/StateModifier');
 var Timer = require('famous/utilities/Timer');
 
 function PopupController() {
-    View.apply(this, arguments);
+    var self = this;
+    View.apply(self, arguments);
 
     var controller = new RenderController({
-        inTransition: this.options.inTransition,
-        outTransition: this.options.outTransition,
-        overlap: this.options.overlap
+        inTransition: self.options.inTransition,
+        outTransition: self.options.outTransition,
+        overlap: self.options.overlap
     });
-    this.add(controller);
+    self.add(controller);
 
-    this.popups = [];
-    this.controller = controller;
+    self.popups = [];
+    self.controller = controller;
 
     // Public API: respond to both events and methods
     "push,swap,hide,unshift,clear".split(',').forEach(function(name){
-        var method = this[method].bind(this);
-        this._eventInput.on(name,method);
-        if(this.options.global === true) Engine.on('popup-'+name,method);
-    }.bind(this));
+        var method = self[name].bind(self);
+        self._eventInput.on(name,method);
+        if(self.options.global === true) {
+            Engine.on('popup-'+name,method);
+        }
+    });
 
     // If the shown PopupController supports events (i.e. node.on), then respond to 'hide' event.
-    this._eventOutput.on('popup',function(node){
-        if(node.on) node.on('hide',this.hide.bind(this,node));
-    }.bind(this));
+    self._eventOutput.on('popup',function(node){
+        if(node.on) node.on('hide',self.hide.bind(self,node));
+    });
 
 }
 
